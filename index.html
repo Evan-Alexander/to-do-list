@@ -5,34 +5,34 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/scripts.js"></script>
-    <title>Places You've Been</title>
+    <title>To Do</title>
   </head>
   <body>
     <div class="container">
-      <h1>Places You've Been</h1>
+      <h1>To Do</h1>
       <div class="row">
         <div class="col-md-6">
-          <h2>To Do List</h2>
           <form id="to-do">
             <div class="form-group">
-              <label for="to-do-input"></label>
+              <label for="to-do-input">To Do Item</label>
               <input type="text" class="form-control" id="new-item">
             </div>
             <div class="form-group">
-              <label for="to-do-input"></label>
-              <input type="text" class="form-control" id="new-item">
+              <label for="date-input">Date Due</label>
+              <input type="date" class="form-control" id="date-due">
             </div>
-            <div class="form-group">
-              <label for="to-do-input"></label>
-              <input type="text" class="form-control" id="new-item">
+            <div class="form-group radios">
+              <label for="importance"></label>
+              <input class="circles" type="radio" name="importance" value="high">High
+              <input class="circles" type="radio" name="importance" value="medium">Medium
+              <input class="circles" type="radio" name="importance" value="low">Low
             </div>
-            <div class="form-group">
-              <label for="to-do-input"></label>
-              <input type="text" class="form-control" id="new-item">
-            </div>
-
+            <button type="submit" class="btn">Add Item</button>
           </form>
         </div>
+        <div class="col-md-6">
+          <ul id="todo-list">
+          </ul>
 
       </div>
 
