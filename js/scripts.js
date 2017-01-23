@@ -9,6 +9,33 @@ Todo.prototype.getDetails = function() {
   return [this.item, this.dueDate, this.priority, this.notes];
 }
 
+var sortTime = function(date) {
+  var sort = "";
+  var todayDate = new Date();
+  var todayDay = todayDate.getDate();
+  var todayMonth = todayDate.getMonth();
+  var todayYear = todayDate.getFullYear();
+  // parse date into variables to use in conditionals
+  var userYear = parseInt(date.substr(0, 4));
+  var userMonth = parseInt(date.substr(5, 2));
+  var userDay = parseInt(date.substr(8, 2));
+  console.log(todayYear + " " + todayMonth + " " + todayDay + " " + userYear + " " + userMonth + " " + userDay );
+
+
+  if ((todayYear === userYear) && (todayMonth === (userMonth - 1)) && (todayDay === userDay)){
+    sort = "today";
+  } else if ((todayYear === userYear) && (todayMonth === (userMonth - 1)) && ((todayDay + 7) > userDay)  && (todayDay < userDay)){
+    sort = "week";
+  } else if ((todayYear > userYear) || ((todayYear === userYear) && todayMonth > (userMonth - 1)) || ((todayYear === userYear) && (todayMonth === (userMonth - 1) && (todayDay > userDay)))) {
+    sort = "overdue";
+  }
+
+  return sort;
+}
+
+
+
+
 //UI logic
 
 $(document).ready(function(){
@@ -23,7 +50,15 @@ $(document).ready(function(){
 
     var newItem = new Todo(getItem, getDate, getImportance, getNotes, counter);
 
-    $("ul#overdue-list").append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+    var test = sortTime(newItem.dueDate);
+
+    if (test === "today"){
+      $("ul#today-list").append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+    } else if (test === "week"){
+      $("ul#week-list").append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+    } else if (test === "overdue"){
+      $("ul#overdue-list").append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+    }
 
     $(".item").last().click(function() {
       $("#details").text("");
