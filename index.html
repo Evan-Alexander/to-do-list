@@ -12,7 +12,13 @@
       <h1>To Do</h1>
       <div class="row">
         <div class="col-md-6">
-          <form id="to-do">
+          <div class="well">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h2 class="panel-title">Add Task</h2>
+              </div>
+              <div class="panel-body">
+                <form id="to-do">
             <div class="form-group">
               <label for="to-do-input">To Do Item</label>
               <input type="text" class="form-control" id="new-item">
@@ -27,13 +33,66 @@
               <input class="circles" type="radio" name="importance" value="medium">Medium
               <input class="circles" type="radio" name="importance" value="low">Low
             </div>
+            <div class="form-group">
+              <label for="notes">Notes:</label>
+              <textarea name="notes" form="user-form"></textarea>
+            </div>
             <button type="submit" class="btn">Add Item</button>
           </form>
+
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
-          <ul id="todo-list">
-          </ul>
+          <div class="well">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h2 class="panel-title">Over Due</h2>
+              </div>
+              <div class="panel-body">
+                <ul id="todo-list">
+                </ul>
+              </div>
+            </div>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h2 class="panel-title">Today</h2>
+              </div>
+              <div class="panel-body">
+                <ul id="todo-list">
+                </ul>
+              </div>
+            </div>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h2 class="panel-title">This Week</h2>
+              </div>
+              <div class="panel-body">
+                <ul id="todo-list">
+                </ul>
+              </div>
+            </div>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h2 class="panel-title">Longer</h2>
+              </div>
+              <div class="panel-body">
+                <ul id="todo-list">
+                </ul>
+              </div>
+            </div>
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="well" id="details">
+          <h2>Here's what's in store for the week:</h2>
+        </div>
       </div>
 
 
