@@ -21,11 +21,15 @@ $(document).ready(function(){
 
     var newItem = new Todo(getItem, getDate, getImportance, getNotes);
 
-    $("ul#todo-list").append("<li class='item'>" + newItem.item + "</li>");
+    $("ul#overdue-list").append("<li class='item'>" + newItem.item + "</li>");
 
-    var details = newItem.getDetails();
-    details.forEach(function(detail){
-      $("#details").append("<p>" + detail + "</p>");
+    $(".item").last().click(function() {
+      $("#details").text("");
+      var details = newItem.getDetails();
+      details.forEach(function(detail){
+        $("#details").append("<p>" + detail + "</p>");
+      });
+
     });
   });
 });
