@@ -6,3 +6,14 @@
 #show-details {
   display: none;
 }
+
+.high-important {
+  color: green;
+}
+
+.mid-important {
+  color: yellow;
+}
+.low-important {
+  color: red;
+}

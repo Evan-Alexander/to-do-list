@@ -19,7 +19,6 @@ var sortTime = function(date) {
   var userYear = parseInt(date.substr(0, 4));
   var userMonth = parseInt(date.substr(5, 2));
   var userDay = parseInt(date.substr(8, 2));
-  console.log(todayYear + " " + todayMonth + " " + todayDay + " " + userYear + " " + userMonth + " " + userDay );
 
 
   if ((todayYear === userYear) && (todayMonth === (userMonth - 1)) && (todayDay === userDay)){
@@ -31,6 +30,18 @@ var sortTime = function(date) {
   }
 
   return sort;
+}
+
+var sortImportance = function(importance){
+  var sortImport = "none";
+  if(importance === "high"){
+    sortImport = "high-important";
+  } else if (importance === "medium"){
+    sortImport = "mid-important";
+  } else if (importance === "low"){
+    sortImport = "low-important";
+  }
+  return sortImport;
 }
 
 
@@ -45,19 +56,21 @@ $(document).ready(function(){
     event.preventDefault();
     var getItem = $("#new-item").val();
     var getDate = $("#date-due").val();
-    var getImportance = $("input:radio[name=importance].checked").val();
+    var getImportance = $("input:radio[name=importance]:checked").val();
     var getNotes = $("textarea").val();
 
     var newItem = new Todo(getItem, getDate, getImportance, getNotes, counter);
 
     var test = sortTime(newItem.dueDate);
+    console.log(getImportance);
+    var importance = sortImportance(getImportance);
 
     if (test === "today"){
-      $("ul#today-list").append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+      $("ul#today-list ." + importance).append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
     } else if (test === "week"){
-      $("ul#week-list").append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+      $("ul#week-list ." + importance).append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
     } else if (test === "overdue"){
-      $("ul#overdue-list").append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+      $("ul#overdue-list ." + importance).append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
     }
 
     $(".item").last().click(function() {
