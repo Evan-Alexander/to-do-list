@@ -66,11 +66,13 @@ $(document).ready(function(){
     var importance = sortImportance(getImportance);
 
     if (test === "today"){
-      $("ul#today-list ." + importance).append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+      $("ul#today-list ." + importance).append("<li class='item'>" + newItem.item + "</li><input type='checkbox' id='" + newItem.unique + "'>");
     } else if (test === "week"){
-      $("ul#week-list ." + importance).append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+      $("ul#week-list ." + importance).append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'></li>");
     } else if (test === "overdue"){
-      $("ul#overdue-list ." + importance).append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'</li>");
+      $("ul#overdue-list ." + importance).append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'></li>");
+    } else {
+      $("ul#longer-list ." + importance).append("<li class='item'>" + newItem.item + "<input type='checkbox' id='" + newItem.unique + "'></li>");
     }
 
     $(".item").last().click(function() {

@@ -1,19 +1,54 @@
+body {
+  font-size: 1.5em;
+}
+
+.col-md-6 {
+  padding: 0;
+}
+
+#right {
+  padding-left: 20px;
+}
+
+#left {
+  padding-right: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.panel-title {
+  font-size: 2em;
+}
+
 .circles {
   display: block;
   padding: 1em;
 }
 
-#show-details {
+/*#show-details {
   display: none;
-}
+}*/
 
 .high-important {
   color: green;
 }
 
 .mid-important {
-  color: yellow;
+  color: #f4cb42;
 }
+
 .low-important {
   color: red;
+}
+
+.item input {
+  margin-left: 2em;
+}
+
+.item {
+  font-size: 1.5em;
+  text-shadow: 2px 2px 2px #000;
+  display: inline;
 }
