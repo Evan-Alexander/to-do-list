@@ -82,8 +82,8 @@ $(document).ready(function(){
     $("button.complete").click(function(){
       console.log($(this).siblings());
       $(this).parent().remove();
+      $("#show-details").hide();
     });
     // increase counter for each submit click for internal tracking on each object created
-    counter += 1;
   });
 });

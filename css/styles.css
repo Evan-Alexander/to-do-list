@@ -27,9 +27,9 @@ h1 {
   padding: 1em;
 }
 
-/*#show-details {
+#show-details {
   display: none;
-}*/
+}
 
 .high-important {
   color: green;
