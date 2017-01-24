@@ -1,9 +1,8 @@
-function Todo(item, date, priority, notes, counter){
+function Todo(item, date, priority, notes){
   this.item = item;
   this.dueDate = date;
   this.priority = priority;
   this.notes = notes;
-  this.unique = "item" + counter;
 }
 Todo.prototype.getDetails = function() {
   return [this.item, this.dueDate, this.priority, this.notes];
@@ -44,14 +43,9 @@ var sortImportance = function(importance){
   return sortImport;
 }
 
-
-
-
 //UI logic
 
 $(document).ready(function(){
-  //local variable to UI logic to keep track of objects for use in checkbox creation
-  var counter = 1;
 
   $("form#to-do").submit(function(event){
     event.preventDefault();
@@ -60,19 +54,19 @@ $(document).ready(function(){
     var getImportance = $("input:radio[name=importance]:checked").val();
     var getNotes = $("textarea").val();
 
-    var newItem = new Todo(getItem, getDate, getImportance, getNotes, counter);
+    var newItem = new Todo(getItem, getDate, getImportance, getNotes);
 
     var test = sortTime(newItem.dueDate);
     var importance = sortImportance(getImportance);
 
     if (test === "today"){
-      $("ul#today-list ." + importance).append("<div><li class='item'>" + newItem.item + "</li><input type='checkbox' id='" + newItem.unique + "'><button type='click' class='btn complete' id='" + newItem.unique + "'> Completed </button></div>");
+      $("ul#today-list ." + importance).append("<div><li class='item'>" + newItem.item + "</li><button type='click' class='btn complete'> Completed </button></div>");
     } else if (test === "week"){
-      $("ul#week-list ." + importance).append("<div><li class='item'>" + newItem.item + "</li><input type='checkbox' id='" + newItem.unique + "'><button type='click' class='btn complete' id='" + newItem.unique + "'> Completed </button></div>");
+      $("ul#week-list ." + importance).append("<div><li class='item'>" + newItem.item + "</li><button type='click' class='btn complete'> Completed </button></div>");
     } else if (test === "overdue"){
-      $("ul#overdue-list ." + importance).append("<div><li class='item'>" + newItem.item + "</li><input type='checkbox' id='" + newItem.unique + "'><button type='click' class='btn complete' id='" + newItem.unique + "'> Completed </button></div>");
+      $("ul#overdue-list ." + importance).append("<div><li class='item'>" + newItem.item + "</li><button type='click' class='btn complete'> Completed </button></div>");
     } else {
-      $("ul#longer-list ." + importance).append("<div><li class='item'>" + newItem.item + "</li><input type='checkbox' id='" + newItem.unique + "'><button type='click' class='btn complete' id='" + newItem.unique + "'> Completed </button></div>");
+      $("ul#longer-list ." + importance).append("<div><li class='item'>" + newItem.item + "</li><button type='click' class='btn complete'> Completed </button></div>");
     }
 
     $(".item").last().click(function() {
@@ -87,7 +81,6 @@ $(document).ready(function(){
     });
     $("button.complete").click(function(){
       console.log($(this).siblings());
-      
       $(this).parent().remove();
     });
     // increase counter for each submit click for internal tracking on each object created
